@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: #eee;
+        }
+        .box{
+            width: 500px;
+            margin: 100px auto;
+
+        }
+        .box span{
+            float: left;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            font-size: 80px;
+            line-height: 100px;
+            text-align: center;
+            font-family: "Microsoft YaHei";
+
+        }
+        
+        span::before,span::after{
+            /*通过伪元素获取 自定义属性 的值*/
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            font-size: 80px;
+            line-height: 100px;
+            text-align: center;
+            font-family: "Microsoft YaHei";
+            color: #fff;
+            transform:scale(0.9,1);
+            /* 变换中心*/
+            transform-origin: left;
+
+            /*过渡*/
+            transition: all 0.5s;
+        }
+        span::before{
+            color: rgba(0,0,0,0.3);
+        }
+        .box:hover span::after{
+            transform: rotateY(25deg) skew(0deg,5deg);
+        }
+
+        .box:hover span:before{
+            /*倾斜*/
+            transform:skew(0deg,15deg);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span data-text="黄">黄</span>
+    <span data-text="洁">洁</span>
+    <span data-text="芳">芳</span>
+
+</div>
+</body>
+</html>

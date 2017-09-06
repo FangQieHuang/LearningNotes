@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    div {
+        height: 200px;
+        width: 200px;
+        background-color: pink;
+    }
+    </style>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        var a = 10;
+        //1.获取div
+        //2.绑定事件
+        //3.书写事件驱动程序
+
+        var count = 0;
+
+        $(function () {
+            $("div").click(function () {
+                count++;
+                //设置给div内容
+                $(this).html(count);
+            });
+        })
+
+    </script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

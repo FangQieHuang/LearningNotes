@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form {
+            width:100%;
+            /*最大宽度*/
+            max-width:640px;
+            /*最小宽度*/
+            min-width:320px;
+            margin:0 auto;
+            font-family:"Microsoft YaHei";
+            font-size:20px;
+        }
+
+        input,meter,progress {
+            display: block;
+            width:100%;
+            height:28px;
+            margin:10px 0;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <fieldset>
+        <legend>表单元素</legend>
+        <lable>
+            用户名： <input type="text" name="userName" />
+        </lable>
+
+        <lable>
+            密码：<input type="password" name="pwd" />
+        </lable>
+
+        <lable>
+            性别： <input type="text" name="sex" list="sex" />
+        </lable>
+
+        <!-- 定义数据列表-->
+        <datalist id="sex">
+            <option>男</option>
+            <option>女</option>
+            <option>不祥</option>
+        </datalist>
+
+        <lable for="">
+            推荐人: <output>春哥</output>
+        </lable>
+        <br/><br/>
+
+        <lable for="">
+            加密类型：<keygen/>
+        </lable>
+        <br/><br/>
+        <lable for="#">
+            度量器： <meter value="50" max="100" min="50" low="30" high="80"></meter>
+        </lable>
+        <!-- 进度条 -->
+        <progress value="40" max="100" min="0"></progress>
+
+
+        <input type="submit" value="提交" />
+    </fieldset>
+</form>
+
+</body>
+</html>

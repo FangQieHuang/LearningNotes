@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        form{
+            width: 100%;
+            /* 最大宽度*/
+            max-width: 640px;
+            /* 最小宽度*/
+            min-width: 320px;
+            margin:0 auto;
+            font-family: "Microsoft Yahei";
+            font-size: 20px;
+        }
+
+        input{
+            display: block;
+            width: 100%;
+            height:30px;
+            margin:10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        placeholder:提示文字（占位符）
+        autofocus：自动获取焦点
+        autocomplete：自动完成（填充的） on开启（默认） off（取消）
+        required：必填
+        multiple：多选
+        novalidate:关闭默认的验证功能（只能加给form）
+        pattern：自定义正则验证
+        pattern="1\d{10}"
+    -->
+    <form action="">
+        <fieldset>
+            <legend>表单属性</legend>
+            <lable>
+                用户名： <input type="text" placeholder="例如：李狗蛋" autofocus name="userName" autocomplete="on" required />
+
+            </lable>
+
+            <lable>
+                电话: <input type="tel" pattern="1\d{10}" />
+            </lable>
+
+            <!-- 上次文件-->
+            <input type="file" name="file" multiple/>
+
+            <input type="submit"/>
+        </fieldset>
+    </form>
+</body>
+</html>

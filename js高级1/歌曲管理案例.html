@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 850px;
+            border: 1px solid #dad8d8;
+
+            /*height: 100%;*/
+        }
+        .songslist-main, .songslist-header {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        .songslist-header {
+            height: 30px;
+            border-bottom: 1px solid #dad8d8;
+            line-height: 30px;
+            background-color: #def;
+        }
+
+        .songslist-name {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-singer {
+            position: absolute;
+            left: 40%;
+            width: 50%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-option {
+            position: absolute;
+            left: 90%;
+            width: 10%;
+            height: 100%;
+        }
+
+        .songslist-main {
+            background-color: #fff;
+            height: 100%;
+        }
+        .songslist-main .songslist-name{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-main .songslist-singer{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-single {
+            height: 50px;
+        }
+    </style>
+    <script>
+        function MP3(songs){
+            this.songList = songs || [];
+        }
+
+
+
+
+        MP3.prototype = {
+            constructor : MP3,
+            addSong:function(songName,singer){
+                if(songName == undefined||singer==undefined||songName == "" || singer == ""){
+                    throw "请以正确的方式添加歌曲！";
+                }
+                var temp = {name:songName,singer:singer};
+                this.songList.push(temp);
+                return temp;
+
+            },
+            removeSong:function(songName){
+                var song = this.selectSong(songName);
+                var index = this.songList.indexOf(song);
+                if(index!=-1){
+                    this.songList.splice(index,1);
+                    return true;
+                }else{
+                    return false;
+                }
+            },
+            updateSong:function(songName,singer){
+                var song = this.selectSong(songName);
+                if(song == null){
+                    return null;
+                }else{
+                    song.singer = singer;
+                    return song;
+                }
+            },
+            selectSong: function (songName) {
+                for (var i = 0; i < this.songList.length; i++) {
+                    var song = this.songList[i];
+                        if(song.name ==songName){
+                            return song;
+                        }
+
+                }
+                return null;
+            }
+        };
+        var myMP3 = new MP3([
+            {
+                name:"南山南",
+                singer:"马"
+            },
+            {
+                name:"大明湖畔",
+                singer:"夏雨荷"
+            },
+            {
+                name:"五环之歌",
+                singer:"小月月"
+            }
+        ]);
+
+        var song = myMP3.selectSong("五环之歌");
+        console.log(song);
+
+        var isDeleted =myMP3.removeSong("大明湖畔");
+        console.log(isDeleted,myMP3.songList);
+
+        var song1 = myMP3.updateSong("五环之歌","潘文斌");
+        console.log(myMP3.songList,song1);
+
+        var song2 = myMP3.addSong("十七环之歌","郭德纲");
+        console.log(myMP3.songList,song2);
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="songslist-top">
+        <label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" />
+        <label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" />
+        <button id="btnAdd">添加</button>
+        <button id="btnRemove">删除</button>
+    </div>
+
+    <div class="songslist-header">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+        <div class="songslist-option">操作</div>
+    </div>
+
+    <div class="songslist-main" id="c">
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

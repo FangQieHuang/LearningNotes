@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-2.2.0.js"></script>
+</head>
+<body>
+<script>
+    var obj = { a: 111, b: 222, c: 333, d:444};
+    var arr = [ 'aaa', 'bbb' ,'ccc' ,'ddd'];
+
+   /* $.each(obj,function(key,val) {
+        console.log(key, val);
+    });
+    $.each( arr ,function(index,val) {
+        console.log(index, val);
+    });
+
+    arr.forEach( function( val,index ) {
+        console.log(val, index);
+    });*/
+
+
+    function each ( obj,fn ) {
+        if('length' in obj ){
+            for( var i= 0, len = obj.length; i < len;i++ ){
+                fn(i, obj[ i ]);
+            }
+        }else {
+            for( var key in obj ) {
+                fn( key,obj[ key ]);
+            }
+        }
+    }
+
+    each( obj,function( key,val ){
+        console.log(key, val);
+    });
+    each( arr, function( index,val ) {
+        console.log(index, val);
+    });
+
+</script>
+</body>
+</html>
